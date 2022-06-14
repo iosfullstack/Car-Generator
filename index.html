@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body id="box-body">
+    <div id="box">
+        <div class="timer">
+            <p>Timer: &nbsp;<span id="timing">30</span>secs</p>
+        </div>
+
+        <div class="input-cars">
+            <input type="text" name="" id="texted" readonly>
+        </div>
+       
+
+
+
+        <div class="buttons">
+            <button id="clicked" onclick="generate()">Generate</button>
+            <button id="stop" style="background-image: linear-gradient(to right, #DD5E89 0%, #F7BB97 51%, #DD5E89 100%);" onclick="stop()">Stop</button>
+        </div>
+
+        
+    </div>
+
+
+
+    <script>
+        var cars = ["camry", "corolla", "toyota", "honda", "ford", "bmw", "audi", "mercedes", "volkswagen", "tesla", "lamborghini"];
+        var colors = ["linear-gradient(180deg, #FFFFFF 0%, #6284FF 50%, #FF0000 100%)",
+                    "linear-gradient(180deg, #52ACFF 25%, #FFE32C 100%)",
+                    "linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%)",
+                    "linear-gradient(19deg, #21D4FD 0%, #B721FF 100%)",
+                    "linear-gradient(19deg, #3EECAC 0%, #EE74E1 100%)",
+                    "linear-gradient(132deg, #F4D03F 0%, #16A085 100%)",
+                    "linear-gradient(180deg, #A9C9FF 0%, #FFBBEC 100%)",
+                    "linear-gradient(90deg, #FAD961 0%, #F76B1C 100%)",
+                    "linear-gradient(90deg, #FEE140 0%, #FA709A 100%)",
+                    "linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%)",
+                    "linear-gradient(to right, #6a11cb 0%, #2575fc 100%)"];
+
+        var images = ["linear-gradient(180deg, #FFFFFF 0%, #6284FF 50%, #FF0000 100%)",
+                    "linear-gradient(180deg, #52ACFF 25%, #FFE32C 100%)",
+                    "linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%)",
+                    "linear-gradient(19deg, #21D4FD 0%, #B721FF 100%)",
+                    "linear-gradient(19deg, #3EECAC 0%, #EE74E1 100%)",
+                    "linear-gradient(132deg, #F4D03F 0%, #16A085 100%)",
+                    "linear-gradient(180deg, #A9C9FF 0%, #FFBBEC 100%)",
+                    "linear-gradient(90deg, #FAD961 0%, #F76B1C 100%)",
+                    "linear-gradient(90deg, #FEE140 0%, #FA709A 100%)",
+                    "linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%)",
+                    "linear-gradient(to right, #6a11cb 0%, #2575fc 100%)"];
+        
+        // The main Generator function
+        function generate() {
+            var y = setInterval(function () {
+                cargen();
+                colorgen();
+                imagesgen();
+            }, 2000);   //2 seconds
+            cleared();
+        }
+           
+    //    function gen() {
+    //     generate();
+    //     document.getElementById("clicked").addEventListener('click', generate);
+    //    }
+
+
+    // The Reload or Clear function
+    var x = 30;
+    function cleared() {
+        setInterval(function (){
+            var time = document.getElementById("timing").innerText= --x;
+            if (x == 0) {
+                location.reload();
+                alert("Time up");
+                }
+        },2000);    //2 seconds
+        
+    }
+
+
+    // The Stop function
+      function stop() {
+          location.reload("stop");   
+      }
+      
+
+    //   Generating functions for each random.
+    function cargen() {
+        var text = document.getElementById("texted");
+           var random = Math.floor(Math.random() * cars.length);
+           text.value = cars[random];
+    }
+
+    function colorgen() {
+        var show = document.getElementById("texted");
+        var random = Math.floor(Math.random() * colors.length);
+        show.style.backgroundImage = colors[random];
+    }
+
+    function imagesgen() {
+        var shows = document.getElementById("box-body");
+        var random = Math.floor(Math.random() * images.length);
+        shows.style.backgroundImage = images[random];
+    }
+        
+
+    </script>
+        
+</body>
+</html>
